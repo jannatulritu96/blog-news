@@ -9,19 +9,26 @@
   <div class="wrapper ">
     @include('admin/layouts/_mainnav')
     </div>
+
     <div class="main-panel">
       <!-- Navbar -->
       @include('admin/layouts/_topnavbar')
       <!-- End Navbar -->
       <div class="content">
-        @yield('content')
+        <div class="container-fluid">
+          <div class="row">
+             @yield('content')
+          </div>
+        </div>     
       </div>
+
       <footer class="footer">
            @include('admin/layouts/_footer')
         </div>
       </footer>
     </div>
   </div>
+  
   <div class="fixed-plugin">
     <div class="dropdown show-dropdown">
       <a href="#" data-toggle="dropdown">
