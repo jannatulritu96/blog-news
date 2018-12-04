@@ -7,28 +7,15 @@
                   <p class="card-category">Edit {{$category->name}} Category</p>
                 </div>
                 <div class="card-body">
-                  <form method="post" action="{{route('category.update',$category->id)}}">
-                    @csrf
-                    <input type="hidden" name="_method" value="PUT">
-                    <div class="row">
-                      <div class="col-md-10">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Fist Name</label>
-                          <input type="text" name="name" class="form-control"  value="{{$category->name}}" required checkbox="Enter first name">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Status</label><br>
-                          <input type="radio" name="status" @if($category->status=='Active') checked @endif value="Active">Active<br>
-                          <input type="radio" name="status" @if($category->status=='Inactive') checked @endif value="Inactive">Inactive
-                        </div>
-                      </div>
-                    </div>
+                {{ Form::model($category,['route'=>['category.update',$category->id],'method'=>'put'])}}
+                     
+                    <!-- <input type="hidden" name="_method" value="PUT"> -->
+                    @include('admin.category._form')
                                      
-                    <button type="submit" class="btn btn-primary pull-right">Update Category</button>
-                    <div class="clearfix"></div>
-                  </form>
+                    {{Form::submit('Update Category',['class'=>'btn btn-primary pull-right'])}}
+                  
+                  <div class="clearfix"></div>
+                    {{Form::close()}}
                 </div>
               </div>
             </div>

@@ -38,14 +38,14 @@
                          <td>{{$category->status}}</td>
                          <td>
                        
-                        <a href="{{route('category.edit',$category->id)}}" class="btn btn-success">Edit</a>
+                      <a href="{{route('category.edit',$category->id)}}" class="btn btn-success">Edit</a>
                     
-                    <form method="POST" action="{{route('category.destroy',$category->id)}}">
-                      @csrf
-                          <input type="hidden" name="_method" value="DELETE">
-                          <input type="submit" class="btn btn-secondery" value="Delete" onclick="return confirm('Are you confirm to delete?')">
-                         
-                    </form>
+                  {{ Form::open(['route'=>['category.destroy',$category->id],'method'=>'DELETE']) }}
+                  
+                   {{ Form::submit('Delete',['class'=>'btn btn-danger  pull-right'],
+                   ['onclick'=>"return confirm('Are you confirm to delete?')"]) }}
+                          
+                    {{ Form::close() }}
                     
                           </td>
                         </tr>
