@@ -1,5 +1,12 @@
 @extends('admin/layouts/master')
 @section('content')
+<style>
+  .btn{
+    padding: 6px 18px !important;
+    margin: -1.687rem 1px !important;
+  }
+</style>
+
 <div class="col-md-12">
   @if(session()->has('success'))
   <div class="alert alert-primary" role="alert">
@@ -51,6 +58,7 @@
                         </tr>
                       </tbody>
                       @endforeach
+                    
                     </table>
                   </div>
                 </div>

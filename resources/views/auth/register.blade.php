@@ -63,8 +63,9 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
+                              {{-- <a href="{{route('admin.dashboard')}}" class="btn btn-primary">Add New</a> --}}
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Registration') }}
                                 </button>
                             </div>
                         </div>

@@ -8,6 +8,6 @@ class post extends Model
 {
     //
      protected $fillable = [
-        'title', 'author', 'description','tag'
+        'category_id', 'title', 'short_description','description','image','is_featured','total_hit','published_date','status'
     ];
 }

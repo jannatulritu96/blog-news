@@ -16,5 +16,5 @@
 
 
   <script src="{{ asset('public/assets/admin/js/core/jquery.min.js') }}"></script>
-  <script src="asset{{asset('public/assets/admin/js/core/popper.min.js')}}"></script>
+  <script src="{{asset('public/assets/admin/js/core/popper.min.js')}}"></script>
   <script src="{{asset('public/assets/admin/js/core/bootstrap-material-design.min.js')}}"></script>
