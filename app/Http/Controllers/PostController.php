@@ -124,7 +124,7 @@ class PostController extends Controller
         session()->flash('success',$request->title.'Post updated successfuly!');
         return redirect()->route('post.index');
     }
-
+ 
     /**
      * Remove the specified resource from storage.
      *
