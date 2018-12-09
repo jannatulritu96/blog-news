@@ -15,6 +15,13 @@
       @include('admin/layouts/_topnavbar')
       <!-- End Navbar -->
       <div class="content">
+        @if(session()->has('success'))
+        <div class="col-md-12">
+          <div class="alert alert-primary" role="alert">
+            {{session('success')}}
+          </div>
+        </div>  
+          @endif
         <div class="container-fluid">
           <div class="row">
              @yield('content')

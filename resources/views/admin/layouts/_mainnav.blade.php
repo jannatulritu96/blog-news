@@ -20,7 +20,13 @@
           <li class="nav-item ">
             <a class="nav-link" href="{{route('category.index')}}">
               <i class="material-icons">Category</i>
-              <p>Cattegory</p>
+              <p>Category</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{{route('post.index')}}">
+              <i class="material-icons">Post</i>
+              <p>Post</p>
             </a>
           </li>
           

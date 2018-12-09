@@ -8,11 +8,7 @@
 </style>
 
 <div class="col-md-12">
-  @if(session()->has('success'))
-  <div class="alert alert-primary" role="alert">
-    {{session('success')}}
-  </div>
-  @endif
+  
 	<a href="{{route('category.create')}}" class="btn btn-primary">Add New</a>
               <div class="card">
                 <div class="card-header card-header-primary">
