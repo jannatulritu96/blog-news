@@ -11,12 +11,12 @@
             {{ Form::select('category_id',$categories,null,['class'=>'form-control','required','placeholder'=>'Select Category']) }}
         </div>
     </div>
-    {{-- <div class="col-md-12">
+    <div class="col-md-12">
         <div class="form-group">
             {{ Form::label('author_id', 'Author',['class'=>'bmd-label-floating']) }}
             {{ Form::select('author_id',$authors,null,['class'=>'form-control','required','placeholder'=>'Select Author']) }}
         </div>
-    </div> --}}
+    </div>
     <div class="col-md-12">
         <div class="form-group">
             {{ Form::label('title', 'Title',['class'=>'bmd-label-floating']) }}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Category;
+use App\Author;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -16,6 +17,8 @@ class PostController extends Controller
     public function index()
     {
         $data['posts']=Post::all();
+        $data['authors']=Author::all();
+
         return view('admin.post.index',$data);
     }
 
@@ -27,6 +30,7 @@ class PostController extends Controller
     public function create()
     {
       $data['categories'] = Category::where('status','Active')->pluck('name','id');
+      $data['authors']=Author::where('status','Active')->pluck('name','id');
       /**pluck->use form laravel collective and use for dropdown**/
       return view('admin.post.create',$data);
     }
@@ -41,6 +45,7 @@ class PostController extends Controller
     {
         $post = new Post(); 
         $post->category_id=$request->category_id;
+        $post->author_id=$request->author_id;
         $post->title=$request->title;
         $post->short_description=$request->short_description;
         $post->description=$request->description;
@@ -68,6 +73,7 @@ class PostController extends Controller
     {
         $data['post']= Post::findOrFail($id);
         $data['categories']= Category::all();
+        $data['authors']=Author::all();
         return view ('admin.post.show',$data);
     }
 
@@ -81,6 +87,7 @@ class PostController extends Controller
     {
         $data['post']=Post::findOrFail($id);
         $data['categories']=Category::where('status','Active')->pluck('name','id');
+        $data['authors']=Author::where('status','Active')->pluck('name','id');
         return view('admin.post.edit',$data);
     }
 
@@ -96,28 +103,29 @@ class PostController extends Controller
        
         $post=Post::findOrFail($id);
         $post->category_id=$request->category_id;
+        $post->author_id=$request->author_id;
         $post->title=$request->title;
         $post->short_description=$request->short_description;
         $post->description=$request->description; 
         $post->published_date=$request->published_date;
         $post->status=$request->status;
-        if(isset($request->is_featured))
+        if(!isset($request->is_featured))
         {
-            $post->is_featured=$request->is_featured;
-
+            $post->is_featured= 'No';
+        }else{
+            $post->is_featured= $request->is_featured;
         }
+        $post->status= $request->status;
+        $post->published_date= $request->published_date;
 
         if($request->hasFile('image')) {
-file_exists(public_path($post->image)))
+            if(file_exists(public_path($post->image)))
             {
-                
-            if(unlink(public_path($post->image));
+                unlink(public_path($post->image));
             }
-         
-        $image=$request->file('image');
-        $image ->move('images/post',$image->getClientOriginalName());
-        $post->image='public/images/post/'.$image->getClientOriginalName();
-
+            $image = $request->file('image');
+            $image->move('image/post', $image->getClientOriginalName());
+            $post->image = 'image/post/' . $image->getClientOriginalName();
         }
 
         $post->save();

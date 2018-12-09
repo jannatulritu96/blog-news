@@ -21,6 +21,7 @@
                       <thead class=" text-primary">
                         <th>ID</th>
                         <th>Title</th>
+                        <th>Author Name</th>
                         <th>Short description</th>
                         <th>Published date</th>
                         <th>Status</th>
@@ -32,6 +33,13 @@
                       <tr>
                          <td>{{ $post->id }}</td>
                          <td>{{ $post->title }}</td>
+                         <td>
+                          @foreach($authors as $author)
+                           @if( $post->author_id==$author->id )
+                            {{ $author->name }}
+                           @endif
+                          @endforeach 
+                         </td>
                          <td>{{ $post->short_description }}</td>
                          <td>{{ $post->published_date }}</td>
                          <td>{{ $post->status }}</td>

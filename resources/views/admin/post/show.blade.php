@@ -22,6 +22,26 @@
                           <td class="text-center">{{ $post->is_featured }}</td>
                          </tr>
                          <tr>
+                          <td>Category Name</td>
+                          <td class="text-center">
+                            @foreach($categories as $category)
+                           @if( $post->category_id==$category->id )
+                            {{ $category->name }}
+                           @endif
+                          @endforeach 
+                          </td>
+                         </tr>
+                         <tr>
+                          <td>Author Name</td>
+                          <td class="text-center">
+                            @foreach($authors as $author)
+                           @if( $post->author_id==$author->id )
+                            {{ $author->name }}
+                           @endif
+                          @endforeach 
+                          </td>
+                         </tr>
+                         <tr>
                           <td>Total hit</td>
                           <td class="text-center">{{ $post->total_hit }}</td>
                          </tr>
