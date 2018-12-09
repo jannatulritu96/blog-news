@@ -108,10 +108,10 @@ class PostController extends Controller
         }
 
         if($request->hasFile('image')) {
-
-            if(file_exists(public_path($post->image)))
+file_exists(public_path($post->image)))
             {
-                unlink(public_path($post->image));
+                
+            if(unlink(public_path($post->image));
             }
          
         $image=$request->file('image');

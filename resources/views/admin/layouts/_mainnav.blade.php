@@ -29,6 +29,12 @@
               <p>Post</p>
             </a>
           </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{{route('author.index')}}">
+              <i class="material-icons">Author</i>
+              <p>Author</p>
+            </a>
+          </li>
           
         </ul>
       </div>
