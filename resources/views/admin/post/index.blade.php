@@ -2,9 +2,9 @@
 @section('content')
 <style>
   .btn{
-    padding: 6px 18px !important;
-    margin: -1.687rem 1px !important;
-  }
+       padding: 7px 22px !important;
+       margin: 0.313rem 3px !important;;
+     }
 </style>
 
 <div class="col-md-12">
@@ -25,7 +25,7 @@
                         <th>Short description</th>
                         <th>Published date</th>
                         <th>Status</th>
-                        <th>Action</th>
+                        <th>Actions</th>
                     </thead>
                       <tbody>
                        
@@ -33,20 +33,14 @@
                       <tr>
                          <td>{{ $post->id }}</td>
                          <td>{{ $post->title }}</td>
-                         <td>
-                          @foreach($authors as $author)
-                           @if( $post->author_id==$author->id )
-                            {{ $author->name }}
-                           @endif
-                          @endforeach 
-                         </td>
+                         {{-- <td>{{ $post->relAuthor->name }}</td> --}}
                          <td>{{ $post->short_description }}</td>
                          <td>{{ $post->published_date }}</td>
                          <td>{{ $post->status }}</td>
                          <td>
                        
-                      <a href="{{route('post.edit',$post->id)}}" class="btn btn-success">Edit</a>
-                       <a href="{{route('post.show',$post->id)}}" class="btn btn-success">Show</a>
+                      <a href="{{route('post.edit',$post->id)}}" class="btn btn-success">Edit</a><br>
+                      <a href="{{route('post.show',$post->id)}}" class="btn btn-success">Show</a><br>
                     
                   {{ Form::open(['route'=>['post.destroy',$post->id],'method'=>'DELETE']) }}
                   {{ Form::submit('Delete',['class'=>'btn btn-danger  pull-right'],

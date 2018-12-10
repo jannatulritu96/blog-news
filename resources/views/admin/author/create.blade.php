@@ -7,7 +7,7 @@
                   <p class="card-category">Create New Author</p>
                 </div>
                 <div class="card-body">
-                 {{-- @include('admin.layouts._error_message') --}}
+                 @include('admin.layouts._error_message')
                   
                   {{ Form::open(['route'=>'author.store']) }}
                   {{-- <form method="post" action="{{route('author.store')}}"> --}}

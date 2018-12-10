@@ -4,11 +4,11 @@
               <div class="card">
                 <div class="card-header card-header-primary">
                   <h4 class="card-title">
-                  	@foreach($categories as $category) 
+                  	{{-- @foreach($categories as $category) 
 						@if($category->id == $post->category_id)
 							{{ $category->name }}
 						@endif	
-                  	@endforeach
+                  	@endforeach --}}
                   </h4>
                   <p class="card-category">{{ 
                   	$post->title }}</p>
@@ -24,21 +24,23 @@
                          <tr>
                           <td>Category Name</td>
                           <td class="text-center">
-                            @foreach($categories as $category)
+                            {{-- @foreach($categories as $category)
                            @if( $post->category_id==$category->id )
                             {{ $category->name }}
                            @endif
-                          @endforeach 
+                          @endforeach  --}}
+                          {{ $post->relCategory->name }}
                           </td>
                          </tr>
                          <tr>
                           <td>Author Name</td>
                           <td class="text-center">
-                            @foreach($authors as $author)
+                            {{-- @foreach($authors as $author)
                            @if( $post->author_id==$author->id )
-                            {{ $author->name }}
+                            {{ $post->relAuthor->name }}
                            @endif
-                          @endforeach 
+                          @endforeach  --}}
+                          {{-- {{ $post->relAuthor->name }} --}}
                           </td>
                          </tr>
                          <tr>

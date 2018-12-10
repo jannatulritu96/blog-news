@@ -8,8 +8,8 @@
                 </div>
                 <div class="card-body">
                   {{ Form::open(['route'=>'category.store'])}}
-                  <!-- <form method="post" action="{{route('category.store')}}"> -->
-                    <!-- @csrf -->
+                  {{-- <form method="post" action="{{route('category.store')}}"> --}}
+                    {{--  @csrf  --}}
                     @include('admin.category._form')
                    
                     {{Form::submit('Store Category',['class'=>'btn btn-primary pull-right'])}}

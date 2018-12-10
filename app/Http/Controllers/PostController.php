@@ -16,9 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $data['posts']=Post::all();
-        $data['authors']=Author::all();
-
+       
+        $data['posts']=Post::with('relAuthor')->get();
         return view('admin.post.index',$data);
     }
 
@@ -41,6 +40,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $post = new Post(); 
@@ -51,8 +51,11 @@ class PostController extends Controller
         $post->description=$request->description;
         $post->published_date=$request->published_date;
         $post->status=$request->status;
-        $post->is_featured=$request->is_featured;
-
+        
+        if(isset($request->is_featured))
+        {
+             $post->is_featured=$request->is_featured;
+        }
         $image=$request->file('image');
         $image ->move('/image/post',$image->getClientOriginalName());
         $post->image='/image/post/'.$image->getClientOriginalName();
@@ -69,11 +72,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
-        $data['post']= Post::findOrFail($id);
-        $data['categories']= Category::all();
-        $data['authors']=Author::all();
+        $data['post']= Post::with('relAuthor','relCategory')->findOrFail($id);
+        // $data['categories']= Category::all();
+        // $data['authors']=Author::all();
         return view ('admin.post.show',$data);
     }
 
@@ -83,6 +87,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function edit($id)
     {
         $data['post']=Post::findOrFail($id);
@@ -98,6 +103,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
        
@@ -139,6 +145,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
         $post=Post::findOrFail($id);
