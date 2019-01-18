@@ -9,4 +9,8 @@ class Category extends Model
     protected $fillable = [
         'name', 'status'
     ];
+    public function relPost()
+		{
+			return $this->hasMany('App\Post','total_posts','id');
+		}	
 }

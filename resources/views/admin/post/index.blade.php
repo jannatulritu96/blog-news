@@ -33,7 +33,7 @@
                       <tr>
                          <td>{{ $post->id }}</td>
                          <td>{{ $post->title }}</td>
-                         {{-- <td>{{ $post->relAuthor->name }}</td> --}}
+                        {{--  <td>{{ $post->relAuthor->name }}</td> --}}
                          <td>{{ $post->short_description }}</td>
                          <td>{{ $post->published_date }}</td>
                          <td>{{ $post->status }}</td>

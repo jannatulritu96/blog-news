@@ -30,6 +30,7 @@ class PostController extends Controller
     {
       $data['categories'] = Category::where('status','Active')->pluck('name','id');
       $data['authors']=Author::where('status','Active')->pluck('name','id');
+      $data['authors'] = Author::where('status','Active')->pluck('name','id');
       /**pluck->use form laravel collective and use for dropdown**/
       return view('admin.post.create',$data);
     }
@@ -44,8 +45,8 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $post = new Post(); 
-        $post->category_id=$request->category_id;
-        $post->author_id=$request->author_id;
+        $post->category_id= $request->category_id;
+        $post->author_id= $request->author_id;
         $post->title=$request->title;
         $post->short_description=$request->short_description;
         $post->description=$request->description;
